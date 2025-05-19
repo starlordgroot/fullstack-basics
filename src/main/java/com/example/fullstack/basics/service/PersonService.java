@@ -37,7 +37,17 @@ public class PersonService {
     }
 
     public void create(Person personToCreate){
+        if (personToCreate == null) {
+            throw new IllegalArgumentException("Person cannot be null");
+        }
+        if (personToCreate.getFirstName() == null || personToCreate.getFirstName().trim().isEmpty()) {
+            throw new IllegalArgumentException("First name is required");
+        }
+        if (personToCreate.getLastName() == null || personToCreate.getLastName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Last name is required");
+        }
         personRepository.save(personToCreate);
+
     }
 
 }
