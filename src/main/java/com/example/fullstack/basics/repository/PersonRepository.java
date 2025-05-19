@@ -15,4 +15,8 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     @Query("SELECT p FROM Person p WHERE p. firstName LIKE %:name%")
     Person findByThierName(String name);
 
+    //Example with SQL
+    @Query(value = "SELECT * FROM person WHERE firstName = ?1", nativeQuery = true)
+    Person findByTheirNameSQL(String name);
+
 }
